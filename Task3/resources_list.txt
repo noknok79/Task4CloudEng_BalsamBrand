@@ -1,0 +1,31 @@
+# aws_ecr_repository.markvillaueva-image:
+resource "aws_ecr_repository" "markvillaueva-image" {
+    arn                  = "arn:aws:ecr:us-east-1:796384066283:repository/markvillanueva-image"
+    id                   = "markvillanueva-image"
+    image_tag_mutability = "MUTABLE"
+    name                 = "markvillanueva-image"
+    registry_id          = "796384066283"
+    repository_url       = "796384066283.dkr.ecr.us-east-1.amazonaws.com/markvillanueva-image"
+    tags_all             = {}
+
+    encryption_configuration {
+        encryption_type = "AES256"
+    }
+
+    image_scanning_configuration {
+        scan_on_push = false
+    }
+}
+
+# aws_ecs_cluster.my_cluster:
+resource "aws_ecs_cluster" "my_cluster" {
+    arn      = "arn:aws:ecs:us-east-1:796384066283:cluster/markvillanueva-cluster"
+    id       = "arn:aws:ecs:us-east-1:796384066283:cluster/markvillanueva-cluster"
+    name     = "markvillanueva-cluster"
+    tags_all = {}
+
+    setting {
+        name  = "containerInsights"
+        value = "disabled"
+    }
+}
